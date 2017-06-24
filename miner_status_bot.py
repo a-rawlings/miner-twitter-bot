@@ -40,14 +40,14 @@ while check == 1:
 	average_rate = data["avgHashrate"]
 	average_rate = str(average_rate)
 	#I am sure there was an easier way to move the point in the avgHashrate value, it comes in as a float with the point being after 8 digits.
-	#I converted it to a string and then pulled the first three characters to use as my new 00.0 output.
+	#I converted it to a string and then pulled the first four characters to use as my new 000.0 output. If your avg rate isnt 100 plus you need to change this.
 
 #print them to the terminal to check output
-	print("Hashing at " + actual_rate + " with an average of " + average_rate[0:2] + "." + average_rate[2] + " MH/s and reported at " + reported_rate + ".")
+	print("Hashing at " + actual_rate + " with an average of " + average_rate[0:3] + "." + average_rate[3] + " MH/s and reported at " + reported_rate + ".")
 
 #tweet the numbers and catch duplicate status error
 	try:
-		api.update_status("Hashing at " + actual_rate + " with an average of " + average_rate[0:2] + "." + average_rate[2] + " MH/s and reported at " + reported_rate + ".")
+		api.update_status("Hashing at " + actual_rate + " with an average of " + average_rate[0:3] + "." + average_rate[3] + " MH/s and reported at " + reported_rate + ".")
 	except tweepy.TweepError as error:
 		print(error.reason)
 
